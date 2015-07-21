@@ -13,6 +13,7 @@
 
 	<div data-role="header" data-position="fixed">
 		<h1>Employee Directory</h1>
+		<BUTTON href="" onclick="onBackKeyDown1()" id="1exit">Exit</BUTTON>
 	</div>
 
 	<div data-role="content">
@@ -26,7 +27,57 @@
 <script src="js/employeelist.js"></script>
 <script src="js/employeedetails.js"></script>
 <script src="js/reportlist.js"></script>
+<script> 
+jQuery(window).resize(function() { 
+cr_sizeCanvas(jQuery(window).width(), jQuery(window).height()); 
+}); 
 
+document.addEventListener("deviceready", function () 
+{	
+alert('Device ready'); 
+// Create new runtime using the c2canvas 
+cr_createRuntime("c2canvas"); 
+
+document.addEventListener("pause", function() { 
+cr_setSuspended(true); 
+}, false); 
+
+document.addEventListener("resume", function() { 
+cr_setSuspended(false); 
+}, false); 
+
+document.addEventListener("backbutton", onBackKeyDown, false); 
+
+}, false); 
+
+function onBackKeyDown(){
+  var confirm_box = confirm("Do you want to exit app?");
+
+    if (confirm_box == true) {
+      navigator.app.exitApp();
+     // navigator.device.exitApp(); 
+     //parent.history.back();
+    } else {
+        return false;
+    }
+    
+ 
+} 
+function onBackKeyDown1(){ 
+    
+var confirm_box = confirm("Do you want to exit app?");
+
+    if (confirm_box == true) {
+        //alert("hi");
+    //localStorage.clear();
+                        navigator.app.exitApp();
+                        return true;
+    } else {
+        return false;
+    }
+} 
+
+</script> 
 </body>
 
 </html>
